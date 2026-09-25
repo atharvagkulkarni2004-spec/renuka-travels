@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import smtplib
+import smtplib 
+import os
 from email.message import EmailMessage
 
 app = Flask(__name__)
@@ -9,9 +10,11 @@ CORS(app) # React ko connect karne deta hai
 # ==========================================
 # 📧 EMAIL CONFIGURATION (Yahan apni details daal)
 # ==========================================
-SENDER_EMAIL = "atharvagkulkarni2004@gmail.com"
-APP_PASSWORD = "wzbdhrbpxgkmwuoj"
-RECEIVER_EMAIL = "atharvagkulkarni2004@gmail.com"
+
+
+SENDER_EMAIL = os.environ.get('EMAIL_USER')
+APP_PASSWORD = os.environ.get('EMAIL_PASS')
+RECEIVER_EMAIL= os.environ.get('RECEIVER_EMAIL')
 
 @app.route('/api/enquiry', methods=['POST'])
 def submit_enquiry():
