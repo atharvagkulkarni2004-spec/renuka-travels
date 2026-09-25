@@ -55,7 +55,7 @@ function App() {
     
     try {
       // ✅ FIXED: Added '/send_email' route to the Render URL
-      const response = await fetch('https://renuka-travels-jbzv.onrender.com/send_email', {
+      const response = await fetch('https://renuka-travels-jbzv.onrender.com/api/enquiry', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
