@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Form State (Yahan default selection update kiya hai)
+  // Form State
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -54,7 +54,8 @@ function App() {
     setSubmitStatus('loading'); 
     
     try {
-      const response = await fetch('http://127.0.0.1:5000/api/enquiry', {
+      // ✅ FIXED: Added '/send_email' route to the Render URL
+      const response = await fetch('https://renuka-travels-jbzv.onrender.com/send_email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -86,6 +87,7 @@ function App() {
     { name: "Suzuki Dzire", type: "Executive Sedan", seats: "4+1 Seats", luggage: "Medium Luggage", img: "/dzire.jpg", alt: "Suzuki Dzire cab service for Ajanta Caves" },
     { name: "Innova Hycross", type: "Premium SUV", seats: "6+1 Seats", luggage: "Large Luggage", img: "/hycross.jpg", alt: "Innova Hycross premium outstation rental" }
   ];
+  
   // Packages Data with Images
   const packages = [
     { id: 1, title: "Ajanta & Ellora Heritage Tour", duration: "1 to 2 Days", desc: "Complete guided tour of the world-famous UNESCO heritage sites. Comfortable ride with AC and experienced local driver.", img: "/ellora.jpg" },
@@ -297,12 +299,12 @@ function App() {
               <div className="text-4xl mb-4">📞</div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Phone Number</h3>
               <p className="text-gray-600 font-medium">+91 8421496211<br/><span className="text-sm font-normal">(Call or WhatsApp)</span></p>
-            </div>
+            </div>
             <div className="bg-white p-8 rounded-2xl shadow-md text-center hover:shadow-xl transition-all border border-gray-100">
               <div className="text-4xl mb-4">✉️</div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Email Address</h3>
               <p className="text-gray-600 font-medium">atharvagkulkarni2004@gmail.com<br/><span className="text-sm font-normal">24/7 Online Support</span></p>
-            </div>
+            </div>
           </div>
         </div>
       </section>
@@ -354,4 +356,4 @@ function App() {
   )
 }
 
-export default App 
+export default App
